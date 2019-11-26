@@ -1,0 +1,19 @@
+
+
+ <bean class = "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    
+    <!-- <property name = "exceptionMappings">
+         <props>
+            <prop key ="org.hibernate.exception.ConstraintViolationException">
+               ExceptionPage
+            </prop>
+         </props>
+      </property> -->
+
+   <property name = "defaultErrorView" value = "error"/>
+
+</bean> 
+
+
+For this , make a jsp page as error.jsp under /WEB-INF/jsp folder.
+

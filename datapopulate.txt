@@ -1,0 +1,28 @@
+public class MyBean {
+	String name;
+	String astatus;
+        // setter & getter
+}
+
+@Controller
+public class ProductController {
+	@Autowired
+	public UserService userService;
+
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public ModelAndView view() {
+		List<String> mylist = userService.getStatuslist();
+		ModelAndView mav= new ModelAndView("view","myBean",new MyBean());
+		mav.addObject("mlist",mylist);
+		return mav;
+	}
+}
+
+<form:form action="view" method="POST"  modelAttribute="myBean">
+ <table>
+ <tr><td>Name</td> <td><form:input type="text" path="name" name="name"/></td> </tr>
+ <tr><td>Account Status:</td><td> <form:select path="astatus" items="${mlist}" name="astatus">
+ </form:select></td></tr>
+ <tr><td><input type="submit" value="Register"/></td><td></td> </tr>
+ </table>
+ </form:form>
